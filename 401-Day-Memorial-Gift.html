@@ -6,58 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>发癫组合专属网页</title>
     <style>
+        /* 整体页面设置 */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* 标题样式 */
         header {
-            background-color: #007BFF;
-            color: white;
+            background-color: #FF4500;
             text-align: center;
             padding: 30px 0;
             font-size: 2.5em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
         }
 
-     .container {
+        /* 内容容器 */
+      .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 40px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            flex: 1;
         }
 
-     .section {
+        /* 每个章节样式 */
+      .section {
             margin-bottom: 40px;
         }
 
+        /* 章节标题样式 */
         h2 {
-            color: #007BFF;
-            border-bottom: 2px solid #007BFF;
+            color: #FF4500;
+            border-bottom: 2px solid #FF4500;
             padding-bottom: 10px;
             margin-top: 0;
         }
 
+        /* 段落文本样式 */
         p {
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
+        /* 列表样式 */
         ul {
-            list-style-type: disc;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            position: relative;
             padding-left: 20px;
         }
 
+        li:before {
+            content: "\2022";
+            color: #FF4500;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* 图片样式 */
         img {
             max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto 20px;
             border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #FF4500;
+            text-align: center;
+            padding: 15px 0;
+            color: #fff;
+            font-size: 0.9em;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
         }
     </style>
 </head>
@@ -69,7 +107,7 @@
     <div class="container">
         <div class="section">
             <h2>组合简介</h2>
-            <p>我们是发癫组合，拥有无数难忘的回忆，在这里，我们将一起重温那些美好时光。</p>
+            <p>我们是充满活力与欢乐的发癫组合，拥有无数难忘的回忆，在这里，我们将一起重温那些美好时光。</p>
         </div>
         <div class="section">
             <h2>毕业院校</h2>
@@ -79,21 +117,4 @@
             <h2>旅行足迹</h2>
             <ul>
                 <li>成都</li>
-                <li>云南</li>
-                <li>黄山</li>
-                <li>上海</li>
-                <li>广东</li>
-                <li>北京</li>
-                <li>甘肃</li>
-                <li>川西</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>精彩瞬间（照片展示）</h2>
-            <img src="your-image-url" alt="照片1">
-            <img src="your-image-url" alt="照片2">
-        </div>
-    </div>
-</body>
-
-</html>
+                <li
