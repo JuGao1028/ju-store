@@ -4,58 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>发癫组合专属网页~</title>
+    <title>点击生成小猫小狗小蝴蝶</title>
     <style>
         body {
-            font-family: 'Cursive', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
             margin: 0;
             padding: 0;
         }
 
-        #map {
-            width: 100vw;
-            height: 80vh;
+        #header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #main-content {
+            padding: 20px;
+            position: relative;
+        }
+
+      .pet-text {
+            position: absolute;
+            font-size: 20px;
+            color: #333;
         }
     </style>
 </head>
 
 <body>
-    <h1 style="text-align: center;">发癫组合专属网页~</h1>
-    <div id="map"></div>
-    <script type="text/javascript"
-        src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
-    <script>
-        // 初始化地图
-        var map = new BMap.Map("map");
-        map.centerAndZoom(new BMap.Point(104.06, 30.57), 5);
+    <div id="header">
+        <h1>点击生成郭懋懋曾娇娇刘俊俊哇撒撒高高峡</h1>
+    </div>
+    <div id="main-content">
 
-        // 定义地点数组
-        var locations = [
-            { name: '成都树德中学', lat: 30.57, lng: 104.06 },
-            { name: '成都', lat: 30.57, lng: 104.06 },
-            { name: '云南', lat: 25.04, lng: 102.73 },
-            { name: '黄山', lat: 30.18, lng: 118.15 },
-            { name: '上海', lat: 31.23, lng: 121.47 },
-            { name: '广东', lat: 23.13, lng: 113.27 },
-            { name: '北京', lat: 39.91, lng: 116.40 },
-            { name: '甘肃', lat: 35.56, lng: 104.00 },
-            { name: '川西', lat: 30.00, lng: 102.00 }
+    </div>
+    <div id="footer">
+        &copy; 2025 版权所有
+    </div>
+    <script>
+        const moodAdjectives = [
+            '开心的', '悲伤的', '兴奋的', '平静的', '好奇的', '慵懒的', '调皮的', '乖巧的', '紧张的',
+            '放松的', '得意的', '失落的', '温柔的', '暴躁的', '惊喜的', '沮丧的', '欢快的', '忧郁的',
+            '活泼的', '安静的', '焦虑的', '自信的', '害羞的', '勇敢的', '胆小的', '甜蜜的', '苦涩的',
+            '疲惫的', '精神的', '满足的', '渴望的', '迷茫的', '坚定的', '迷茫的', '无奈的', '期待的',
+            '失望的', '孤独的', '热闹的', '自在的', '拘束的', '陶醉的', '厌烦的', '欣慰的', '遗憾的',
+            '欢快的', '难过的', '生气的', '得意洋洋的', '垂头丧气的', '兴高采烈的', '闷闷不乐的',
+            '欢蹦乱跳的', '无精打采的', '悠然自得的', '心急如焚的', '忐忑不安的', '心花怒放的',
+            '愁眉苦脸的', '眉飞色舞的', '唉声叹气的', '喜笑颜开的', '泪流满面的', '笑逐颜开的',
+            '嚎啕大哭的', '和颜悦色的', '横眉竖眼的', '喜气洋洋的', '怒气冲冲的', '兴致勃勃的',
+            '灰心丧气的', '神采奕奕的', '没精打采的', '满面春风的', '愁眉不展的', '容光焕发的',
+            '黯然失色的', '跃跃欲试的', '畏畏缩缩的', '洋洋得意的', '耿耿于怀的', '乐此不疲的',
+            '不胜其烦的', '怡然自得的', '若有所思的', '恍然大悟的', '糊里糊涂的', '心平气和的',
+            '心烦意乱的', '泰然自若的', '惊慌失措的', '朝气蓬勃的', '暮气沉沉的'
         ];
 
-        // 遍历地点数组并添加标记
-        locations.forEach(function (location) {
-            var point = new BMap.Point(location.lng, location.lat);
-            var marker = new BMap.Marker(point);
-            var infoWindow = new BMap.InfoWindow(location.name);
+        const petTypes = ['郭懋懋', '刘俊俊', '曾娇娇','哇撒撒','高高峡'];
 
-            marker.addEventListener('click', function () {
-                map.openInfoWindow(infoWindow, point);
-            });
-
-            map.addOverlay(marker);
-        });
-    </script>
-
-</body>
-
-</html>
+        document.addEventListener('click', function (event) {
+            const randomMood
