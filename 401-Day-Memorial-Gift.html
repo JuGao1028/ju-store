@@ -1,10 +1,13 @@
+好呀~以下是修改后确保能通过点击生成文字的完整代码。这段代码主要修改了点击事件处理函数部分，让它能正确生成随机的情绪和名字组合，并将其显示在页面上。
+
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>点击生成郭懋懋曾娇娇刘俊俊哇撒撒高高峡</title>
+    <title>点击生成郭懋懋曾娇娇刘俊俊哇撒撒高高侠</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,5 +76,7 @@
             petText.classList.add('pet-text');
             petText.textContent = `${randomMood} ${randomPet}`;
 
-            // 随机位置显示
-            const x =
+            // 将生成的元素添加到页面中
+            document.getElementById('main-content').appendChild(petText);
+        });
+    </script>
