@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>点击生成郭懋懋曾娇娇刘俊俊哇撒撒高高侠</title>
+    <title>点击生成郭懋懋曾娇娇刘俊俊哇撒撒高高峡</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,7 +25,7 @@
             position: relative;
         }
 
-      .pet-text {
+     .pet-text {
             position: absolute;
             font-size: 20px;
             color: #333;
@@ -60,7 +60,18 @@
             '心烦意乱的', '泰然自若的', '惊慌失措的', '朝气蓬勃的', '暮气沉沉的'
         ];
 
-        const petTypes = ['郭懋懋', '刘俊俊', '曾娇娇','哇撒撒','高高峡'];
+        const petTypes = ['郭懋懋', '刘俊俊', '曾娇娇', '哇撒撒', '高高峡'];
 
         document.addEventListener('click', function (event) {
-            const randomMood
+            const randomMoodIndex = Math.floor(Math.random() * moodAdjectives.length);
+            const randomPetIndex = Math.floor(Math.random() * petTypes.length);
+
+            const randomMood = moodAdjectives[randomMoodIndex];
+            const randomPet = petTypes[randomPetIndex];
+
+            const petText = document.createElement('div');
+            petText.classList.add('pet-text');
+            petText.textContent = `${randomMood} ${randomPet}`;
+
+            // 随机位置显示
+            const x =
