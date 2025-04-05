@@ -1,1 +1,36 @@
-i'm happy today
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音频展示网站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #audio-player {
+            width: 300px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="audio-player">
+        <audio controls>
+            <source src="hey jude改编.mp3" type="audio/mpeg">
+            你的浏览器不支持音频播放。
+        </audio>
+    </div>
+</body>
+
+</html>
