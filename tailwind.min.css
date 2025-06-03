@@ -1,0 +1,179 @@
+/*
+  This is a placeholder for the Tailwind CSS v3 with typography plugin.
+  In a real scenario, this file would contain the full generated Tailwind CSS.
+  To generate it for this project:
+  1. Ensure you have Node.js and npm/yarn.
+  2. Install Tailwind CSS: `npm install -D tailwindcss @tailwindcss/typography`
+  3. Create a `tailwind.config.js`:
+     module.exports = {
+       content: ["./index.html", "./script.js"],
+       theme: { extend: {} },
+       plugins: [require('@tailwindcss/typography')],
+     }
+  4. Create a `src/input.css`:
+     @tailwind base;
+     @tailwind components;
+     @tailwind utilities;
+  5. Run the build command: `npx tailwindcss -i ./src/input.css -o ./assets/css/tailwind.min.css --minify`
+
+  Alternatively, for this "no build" environment, you would:
+  1. Visit https://cdn.tailwindcss.com?plugins=typography in a browser.
+  2. Copy the entire content of the <style id="__TAG_STYLE_RES_TAILWIND_台北研發中心系統訊息"> element.
+  3. Paste it into this file.
+
+  Since that content is very large (approx 300KB-1MB), I'm providing a minimal set of styles
+  to ensure the page structure is somewhat preserved. This is NOT the full Tailwind CSS.
+  For full functionality and appearance, the actual Tailwind CSS output is required.
+*/
+
+/* Minimal base styles to make the page somewhat usable if full Tailwind is missing */
+*, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: currentColor; }
+html { line-height: 1.5; -webkit-text-size-adjust: 100%; -moz-tab-size: 4; tab-size: 4; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+body { margin: 0; line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+a { color: inherit; text-decoration: inherit; }
+img, svg, video, canvas, audio, iframe, embed, object { display: block; vertical-align: middle; max-width: 100%; height: auto; }
+
+/* Basic typography from plugin (very simplified) */
+.prose { color: #374151; }
+.prose h1 { font-size: 2.25em; margin-top: 0; margin-bottom: 0.8888889em; font-weight: 800;}
+.prose p { margin-top: 1.25em; margin-bottom: 1.25em; }
+
+/* Basic layout classes (very simplified) */
+.container { width: 100%; margin-right: auto; margin-left: auto; padding-right: 1rem; padding-left: 1rem; }
+@media (min-width: 640px) { .container { max-width: 640px; } }
+@media (min-width: 768px) { .container { max-width: 768px; } }
+@media (min-width: 1024px) { .container { max-width: 1024px; } }
+@media (min-width: 1280px) { .container { max-width: 1280px; } }
+@media (min-width: 1536px) { .container { max-width: 1536px; } }
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mb-8 { margin-bottom: 2rem; } .mb-10 { margin-bottom: 2.5rem; } .mb-16 { margin-bottom: 4rem; } .mb-20 { margin-bottom: 5rem; } .mb-24 { margin-bottom: 6rem; }
+.mt-4 { margin-top: 1rem; } .mt-6 { margin-top: 1.5rem; } .mt-8 { margin-top: 2rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+.py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+.py-24 { padding-top: 6rem; padding-bottom: 6rem; }
+.p-4 { padding: 1rem; } .p-6 { padding: 1.5rem; } .p-8 { padding: 2rem; } .p-10 { padding: 2.5rem; }
+.pt-16 { padding-top: 4rem; }
+
+.text-center { text-align: center; }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 3rem; line-height: 1; }
+.text-6xl { font-size: 3.75rem; line-height: 1; }
+.text-7xl { font-size: 4.5rem; line-height: 1; }
+
+.font-sans { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.leading-relaxed { line-height: 1.625; }
+.tracking-tight { letter-spacing: -0.025em; }
+.max-w-3xl { max-width: 48rem; }
+.fixed { position: fixed; }
+.top-0 { top: 0px; } .left-0 { left: 0px; } .right-0 { right: 0px; }
+.z-50 { z-index: 50; }
+
+.bg-slate-100 { background-color: #f1f5f9; }
+.bg-slate-800 { background-color: #1e293b; }
+.bg-slate-900 { background-color: #0f172a; }
+.bg-white { background-color: #ffffff; }
+.bg-opacity-90 { background-color: rgba(15, 23, 42, 0.9); } /* Assuming slate-900 with opacity */
+.text-white { color: #ffffff; }
+.text-slate-300 { color: #cbd5e1; }
+.text-slate-700 { color: #334155; }
+.text-slate-900 { color: #0f172a; }
+.text-amber-600 { color: #d97706; }
+.text-teal-300 { color: #5eead4; }
+.text-teal-600 { color: #0d9488; }
+.text-red-600 { color: #dc2626; }
+.text-emerald-600 { color: #059669; }
+.text-orange-600 { color: #ea580c; }
+
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+.shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+.shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
+
+.rounded-xl { border-radius: 0.75rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.overflow-hidden { overflow: hidden; }
+.border { border-width: 1px; }
+.border-slate-300 { border-color: #cbd5e1; }
+.border-l-4 { border-left-width: 4px; }
+.border-amber-500 { border-color: #f59e0b; }
+.pl-6 { padding-left: 1.5rem; }
+.bg-amber-50 { background-color: #fffbeb; }
+.italic { font-style: italic; }
+
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.space-x-3 > :not([hidden]) ~ :not([hidden]) { margin-left: calc(0.75rem * calc(1 - 0)); margin-right: calc(0.75rem * 0); }
+.space-x-4 > :not([hidden]) ~ :not([hidden]) { margin-left: calc(1rem * calc(1 - 0)); margin-right: calc(1rem * 0); }
+.space-x-5 > :not([hidden]) ~ :not([hidden]) { margin-left: calc(1.25rem * calc(1 - 0)); margin-right: calc(1.25rem * 0); }
+.space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: calc(1rem * calc(1 - 0)); margin-bottom: calc(1rem * 0); }
+.space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: calc(2rem * calc(1 - 0)); margin-bottom: calc(2rem * 0); }
+
+.grid { display: grid; }
+.md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.lg\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+.w-6 { width: 1.5rem; } .h-6 { height: 1.5rem; }
+.w-7 { width: 1.75rem; } .h-7 { height: 1.75rem; }
+.w-10 { width: 2.5rem; } .h-10 { height: 2.5rem; }
+.w-48 { width: 12rem; } .h-48 { height: 12rem; }
+.w-full { width: 100%; }
+.h-56 { height: 14rem; }
+.h-72 { height: 18rem; }
+.h-96 { height: 24rem; }
+.md\\:h-\\[500px\\] { height: 500px; }
+.md\\:h-80 { height: 20rem; }
+
+.mr-3 { margin-right: 0.75rem; }
+.mr-4 { margin-right: 1rem; }
+.mt-1 { margin-top: 0.25rem; }
+.flex-shrink-0 { flex-shrink: 0; }
+.hidden { display: none; }
+.md\\:flex { display: flex; }
+.bg-slate-50 { background-color: #f8fafc; }
+.bg-slate-200 { background-color: #e2e8f0; }
+.text-slate-500 { color: #64748b; }
+.text-slate-600 { color: #475569; }
+.text-slate-800 { color: #1e293b; }
+
+.object-cover { object-fit: cover; }
+.group:hover .group-hover\\:text-teal-600 { color: #0d9488; }
+.transform { transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1); }
+.hover\\:shadow-xl:hover { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+.hover\\:-translate-y-1:hover { transform: translateY(-0.25rem); }
+.transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.duration-300 { transition-duration: 300ms; }
+.ease-out { transition-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+.cursor-pointer { cursor: pointer; }
+.backdrop-blur-md { backdrop-filter: blur(12px); }
+.scroll-mt-20 { scroll-margin-top: 5rem; }
+
+/* Ensure Chart.js canvas is relatively positioned for tooltips */
+.relative { position: relative; }
+
+/* Basic styles for Lucide icons if not picked by script */
+[data-lucide] {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 2;
+    stroke: currentColor;
+    fill: none;
+}

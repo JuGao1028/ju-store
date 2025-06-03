@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缅甸地震灾情与救援纪实</title>
+    <link rel="stylesheet" href="assets/css/tailwind.min.css">
+    <link rel="stylesheet" href="assets/css/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-100 text-slate-700 font-sans pt-16">
+    <nav id="navbar" class="bg-slate-900 bg-opacity-90 backdrop-blur-md text-white py-3 px-6 shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto flex justify-center items-center space-x-3 md:space-x-5 text-sm md:text-base">
+            <a href="#overview" class="hover:text-teal-300 transition-colors duration-300">概况</a>
+            <a href="#map-location" class="hover:text-teal-300 transition-colors duration-300">位置</a>
+            <a href="#impact" class="hover:text-teal-300 transition-colors duration-300">影响</a>
+            <a href="#data-visualization" class="hover:text-teal-300 transition-colors duration-300">数据</a>
+            <a href="#rescue" class="hover:text-teal-300 transition-colors duration-300">救援</a>
+            <a href="#imagery" class="hover:text-teal-300 transition-colors duration-300">影像</a>
+            <a href="#humanitarian" class="hover:text-teal-300 transition-colors duration-300">人道</a>
+            <a href="#context" class="hover:text-teal-300 transition-colors duration-300">背景</a>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-r from-slate-800 via-slate-900 to-black text-white py-20 md:py-24 shadow-2xl">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight">缅甸地震灾情与救援纪实</h1>
+            <p class="mt-6 text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">记录灾难瞬间，聚焦八方驰援，共筑希望长城</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-16">
+        <section id="overview" class="mb-20 md:mb-24 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="activity" class="w-10 h-10 mr-4 text-amber-600"></i>
+                地震概况
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="text-lg leading-relaxed mb-6">一场剧烈的地震袭击了缅甸，造成了严重的人道主义危机和广泛的物质损失。以下是关于此次地震的核心信息：</p>
+                    <ul class="space-y-4 text-slate-800">
+                        <li class="flex items-start">
+                            <i data-lucide="calendar-days" class="w-6 h-6 mr-3 mt-1 text-amber-600 flex-shrink-0"></i>
+                            <div><strong>发生时间：</strong> 2025年3月28日 (基于初步信息推断，具体时间待官方确认)</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="map-pin" class="w-6 h-6 mr-3 mt-1 text-amber-600 flex-shrink-0"></i>
+                            <div><strong>主要影响区域：</strong> 缅甸曼德勒省及其周边地区</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="zap" class="w-6 h-6 mr-3 mt-1 text-amber-600 flex-shrink-0"></i>
+                            <div><strong>地震震级：</strong> 里氏 <strong>7.9</strong> 级强震</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="arrow-down-to-dot" class="w-6 h-6 mr-3 mt-1 text-amber-600 flex-shrink-0"></i>
+                            <div><strong>震源深度：</strong> 约 10-20 公里 <span class="text-sm text-slate-500">(初步估计)</span></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidden md:flex justify-center items-center p-6 bg-slate-50 rounded-lg">
+                     <i data-lucide="globe-2" class="w-48 h-48 text-slate-300"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="map-location" class="mb-20 md:mb-24 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="map-pinned" class="w-10 h-10 mr-4 text-teal-600"></i>
+                地理位置与影响范围
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg">
+                <p class="text-lg leading-relaxed mb-6">为了更直观地了解地震影响，下方区域展示了交互式地图，标明震中、主要受灾城市及其他重要地点。您可以通过缩放和平移操作查看地图细节。</p>
+                <div id="map" class="w-full h-96 md:h-[500px] bg-slate-200 rounded-lg border border-slate-300 overflow-hidden">
+                </div>
+                <p class="mt-6 text-sm text-slate-600">注：地图信息基于初步数据，准确的地理数据对于制定救援策略和资源分配至关重要。影响范围为示意，实际受灾情况可能更广。</p>
+            </div>
+        </section>
+
+        <section id="impact" class="mb-20 md:mb-24 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="home-x" class="w-10 h-10 mr-4 text-red-600"></i>
+                灾情影响
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg space-y-8">
+                <p class="text-lg leading-relaxed">此次强震对缅甸造成了毁灭性的打击，其影响深远且广泛，具体表现在以下几个方面：</p>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
+                        <i data-lucide="users-round" class="w-7 h-7 mr-3 text-red-500"></i>人员伤亡与损失
+                    </h3>
+                    <p class="leading-relaxed">地震导致了严重的人员伤亡。据不完全统计与估算，遇难人数可能超过千人，另有数千人受伤，大量民众失踪。每一个数字背后都是破碎的家庭和无尽的悲痛。具体的伤亡数字仍在紧张统计与核实中。</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
+                        <i data-lucide="building-2" class="w-7 h-7 mr-3 text-red-500"></i>建筑物与基础设施损毁
+                    </h3>
+                    <p class="leading-relaxed">无数房屋、学校、医院等建筑物在强震中倒塌或严重受损，许多珍贵的历史文化建筑也未能幸免。道路、桥梁、电力及通讯等关键基础设施遭到大面积破坏，使得灾区交通和通讯一度中断或严重受阻，极大地影响了救援工作的初期开展和灾民的基本生活保障。</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
+                        <i data-lucide="mountain-snow" class="w-7 h-7 mr-3 text-red-500"></i>次生灾害频发
+                    </h3>
+                    <p class="leading-relaxed">强震还引发了包括山体滑坡、泥石流、地面开裂和塌陷等多种次生灾害，进一步加剧了灾区的危险状况和救援难度。部分地区甚至出现了地缝开合、河道堵塞等严重地质现象，对幸存者构成了持续威胁。</p>
+                </div>
+                 <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
+                        <i data-lucide="thermometer-sun" class="w-7 h-7 mr-3 text-red-500"></i>灾区环境恶劣与卫生挑战
+                    </h3>
+                    <p class="leading-relaxed">地震后，灾区环境迅速恶化。部分地区面临高温、降雨等极端天气挑战。水源可能受到污染，遇难者遗体和动物尸体若未能及时处理，易引发疫病传播，对公共卫生构成严峻考验。空气中弥漫的尘土和某些区域的异味，都反映了灾区的严峻状况和潜在的健康风险。</p>
+                </div>
+                 <blockquote class="border-l-4 border-amber-500 pl-6 py-4 bg-amber-50 text-slate-700 italic text-md leading-relaxed shadow-sm">
+                    <p>"地震来临时，大地剧烈摇晃，房屋瞬间崩塌，四周尽是哭喊与呼救……那种恐惧与无助，我永生难忘。我们失去了家园，失去了亲人，但我们不能失去希望。" —— 一位灾区幸存者的泣诉。</p>
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="data-visualization" class="mb-20 md:mb-24 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="bar-chart-big" class="w-10 h-10 mr-4 text-teal-600"></i>
+                关键数据图表
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg">
+                <p class="text-lg leading-relaxed mb-6">通过数据图表，我们可以更清晰地了解灾情程度和救援需求。以下为关键数据图表：</p>
+                <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
+                    <div class="p-6 border bg-white border-slate-100 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-slate-800 mb-4 text-center">地震核心参数</h4>
+                        <div class="h-72 md:h-80 relative"><canvas id="earthquakeParamsChart"></canvas></div>
+                    </div>
+                    <div class="p-6 border bg-white border-slate-100 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-slate-800 mb-4 text-center">预估人员伤亡 (基于早期数据估算)</h4>
+                        <div class="h-72 md:h-80 relative"><canvas id="casualtiesChart"></canvas></div>
+                    </div>
+                    <div class="p-6 border bg-white border-slate-100 rounded-lg shadow-md">
+                        <h4 class="text-xl font-semibold text-slate-800 mb-4 text-center">主要救援力量贡献 (基于公开信息提及频次分析)</h4>
+                        <div class="h-72 md:h-80 relative"><canvas id="rescueEffortsChart"></canvas></div>
+                    </div>
+                </div>
+                <p class="mt-8 text-md leading-relaxed">此外，还将陆续补充救援物资分类与数量、国际援助来源与金额、灾民安置情况等数据的可视化图表。</p>
+                <p class="mt-4 text-sm text-slate-500 italic">数据来源说明：地震核心参数来自初步地质勘测报告。人员伤亡数据综合早期报告、国际救援组织初步评估及类似规模地震灾情数据估算，具体数字以官方持续更新为准。救援力量贡献数据基于对震后初期公开新闻报道及救援信息的词频分析统计，反映不同救援力量在信息层面的关注度和报告活跃度，并非精确的人员或物资投入量。</p>
+            </div>
+        </section>
+
+        <section id="rescue" class="mb-20 md:mb-24 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="siren" class="w-10 h-10 mr-4 text-teal-600"></i>
+                救援行动与重建进展
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg">
+                <p class="text-lg leading-relaxed mb-8">地震发生后，缅甸国内外迅速启动应急响应，一场与时间赛跑的生命大救援全面展开。国际社会纷纷伸出援手，展现了跨越国界的人道主义精神。时间轴记录了关键的救援与初期重建节点：</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon bg-teal-500">
+                            <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-semibold text-teal-700">地震突发，紧急响应</h3>
+                            <p class="text-sm text-slate-600">强震发生，通讯、交通部分中断。地震发生后2小时：当地救援力量率先抵达灾区展开初步搜救和灾情评估。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon bg-teal-500">
+                            <i data-lucide="ship" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-semibold text-teal-700">国际驰援，黄金救援期</h3>
+                            <p class="text-sm text-slate-600">72小时黄金救援期内：中国等国专业救援队携带生命探测仪、搜救犬及重型破拆设备陆续抵达，与当地救援力量并肩作战。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon bg-teal-500">
+                            <i data-lucide="stethoscope" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-semibold text-teal-700">医疗救助，防疫并行</h3>
+                            <p class="text-sm text-slate-600">震后一周：初步损失评估报告发布，紧急医疗救助全面展开。多支国内外医疗队深入灾区，救治伤员，同时开展卫生防疫工作，防止次生灾害。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon bg-teal-500">
+                            <i data-lucide="package-check" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-semibold text-teal-700">物资调配，生命保障</h3>
+                            <p class="text-sm text-slate-600">帐篷、食品、饮用水、药品等急需救援物资通过陆空通道紧急调配运往灾区，保障受灾群众基本生活需求。</p>
+                        </div>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-icon bg-teal-500">
+                            <i data-lucide="home" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-semibold text-teal-700">安置与重建初期规划</h3>
+                            <p class="text-sm text-slate-600">震后一月：临时安置点基本搭建完成，为大量无家可归者提供庇护。灾后恢复与重建的初步规划工作启动，着眼于长期可持续发展。</p>
+                        </div>
+                    </div>
+                </div>
+                 <p class="mt-8 text-md leading-relaxed">尽管救援工作面临着持续余震、复杂地形、交通通讯不便以及地区特殊环境等多重挑战，但救援人员和志愿者们以其卓越的专业素养和无私的奉献精神，在废墟中点亮了生命的希望，谱写了感人至深的救援篇章。</p>
+            </div>
+        </section>
+        
+        <section id="imagery" class="mb-20 md:mb-24 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="film" class="w-10 h-10 mr-4 text-teal-600"></i>
+                影像纪实：现场瞬间
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg">
+                <p class="text-lg leading-relaxed mb-10">
+                    图片与视频能够最直观地传递灾难的真实面貌和救援的艰辛。本版块通过精选的影像资料，记录灾区现场、救援行动、以及民众守望相助的感人瞬间。点击图片可查看大图。
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div class="gallery-item bg-slate-50 rounded-lg shadow-md overflow-hidden group transform hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer">
+                        <img src="https://chinese.aljazeera.net/wp-content/uploads/2025/03/2025-03-30T073643Z_511033861_RC2DNDA15S9N_RTRMADP_3_MYANMAR-QUAKE-1743320987-1743324348.jpg?w=770&resize=770%2C541" alt="救援人员在废墟中搜寻 (来源: 半岛电视台)" class="w-full h-56 object-cover" loading="lazy">
+                        <div class="p-4">
+                            <p class="text-sm font-medium text-slate-700 group-hover:text-teal-600 transition-colors duration-300">救援人员在废墟中搜寻 (来源: 半岛电视台)</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item bg-slate-50 rounded-lg shadow-md overflow-hidden group transform hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer">
+                        <img src="https://global.unitednations.entermediadb.net/assets/mediadb/services/module/asset/downloads/preset/Collections/Embargoed/01-04-2025-WFP-Myanmar-08.jpg/image1170x530cropped.jpg" alt="地震后被夷为平地的社区 (来源: 联合国新闻)" class="w-full h-56 object-cover" loading="lazy">
+                        <div class="p-4">
+                            <p class="text-sm font-medium text-slate-700 group-hover:text-teal-600 transition-colors duration-300">地震后被夷为平地的社区 (来源: 联合国新闻)</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item bg-slate-50 rounded-lg shadow-md overflow-hidden group transform hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer">
+                        <img src="https://pgw.worldjournal.com/gw/photo.php?u=https://uc.udn.com.tw/photo/wj/realtime/2025/03/31/31755843.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600&q=75" alt="灾民在临时避难所 (来源: 世界新闻网)" class="w-full h-56 object-cover" loading="lazy">
+                        <div class="p-4">
+                            <p class="text-sm font-medium text-slate-700 group-hover:text-teal-600 transition-colors duration-300">灾民在临时避难所 (来源: 世界新闻网)</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item bg-slate-50 rounded-lg shadow-md overflow-hidden group transform hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer">
+                        <img src="https://s.rfi.fr/media/display/ac5a97ba-0d48-11f0-af67-005056bf30b7/w:980/p:16x9/AP25089308892733.jpg" alt="救援队伍抵达灾区 (来源: 法广)" class="w-full h-56 object-cover" loading="lazy">
+                        <div class="p-4">
+                            <p class="text-sm font-medium text-slate-700 group-hover:text-teal-600 transition-colors duration-300">救援队伍抵达灾区 (来源: 法广)</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item bg-slate-50 rounded-lg shadow-md overflow-hidden group transform hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer">
+                        <img src="https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/fdea/live/e442cde0-0d30-11f0-a746-2131628b08d1.jpg.webp" alt="民众自发参与救援" class="w-full h-56 object-cover" loading="lazy">
+                        <div class="p-4">
+                            <p class="text-sm font-medium text-slate-700 group-hover:text-teal-600 transition-colors duration-300">民众自发参与救援</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item bg-slate-50 rounded-lg shadow-md overflow-hidden group transform hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer">
+                        <img src="https://imgcdn.thecover.cn/newscontent-8a3fb926-dbc3-4580-864e-53f6d5a27bca-1744369188895.jpg?imageMogr2/auto-orient/thumbnail/1080x%3E/strip/quality/95/ignore-error/1|imageslim" alt="中国救援队在行动 (来源: 封面新闻)" class="w-full h-56 object-cover" loading="lazy">
+                        <div class="p-4">
+                            <p class="text-sm font-medium text-slate-700 group-hover:text-teal-600 transition-colors duration-300">中国救援队在行动 (来源: 封面新闻)</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-8 text-sm text-slate-600">
+                    注：所有影像资料均来自公开报道，旨在真实记录。我们尊重隐私，并优先展示传递希望与韧性的内容。
+                </p>
+            </div>
+        </section>
+
+        <div id="lightbox" class="lightbox-hidden">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-content" id="lightboxImg">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+
+        <section id="humanitarian" class="mb-20 md:mb-24 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="heart-handshake" class="w-10 h-10 mr-4 text-emerald-600"></i>
+                人道视角与社会反响
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg space-y-8">
+                <p class="text-lg leading-relaxed">灾难无情，人间有爱。在缅甸地震灾难中，无数普通人的经历、守望相助的精神以及国际社会的广泛关注，共同构成了这场灾难中闪耀人性光辉的人道主义画卷。</p>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
+                        <i data-lucide="helping-hand" class="w-7 h-7 mr-3 text-emerald-500"></i>守望相助，共克时艰
+                    </h3>
+                    <p class="leading-relaxed">面对突如其来的灾难，灾区民众展现出惊人的勇气、韧性和团结互助的精神。邻里之间互相搀扶，分享稀缺的食物和水，共同清理废墟，搭建临时避难所。许多未受灾地区的民众和海外侨胞也积极行动，通过各种渠道捐款捐物，支援灾区，展现了血浓于水的同胞情谊。</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
+                        <i data-lucide="megaphone" class="w-7 h-7 mr-3 text-emerald-500"></i>媒体聚焦，传递希望
+                    </h3>
+                    <p class="leading-relaxed">国内外媒体对缅甸地震灾情及救援进展给予了高度关注和持续报道。记者们不畏艰险，深入一线，发回大量真实的现场报道、图片和视频。这些报道不仅客观记录了灾难的残酷与救援的挑战，更传递了生命的顽强、救援的进展和人性的光辉，有效引导了舆论，激发了社会各界的同情与支持。</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-3 flex items-center">
+                        <i data-lucide="messages-square" class="w-7 h-7 mr-3 text-emerald-500"></i>民众心声，祈福缅甸
+                    </h3>
+                    <p class="leading-relaxed">在各类社交媒体平台上，全球无数网民为缅甸祈福，点亮蜡烛，表达对遇难者的深切哀悼和对灾区人民的诚挚慰问。许多亲历者、志愿者和救援人员通过网络分享他们的真实故事和感受，让更多人了解到灾区的实际情况、救援工作的艰辛以及人道援助的重要性。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="context" class="mb-16 scroll-mt-20">
+            <h2 class="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 flex items-center">
+                <i data-lucide="alert-triangle" class="w-10 h-10 mr-4 text-orange-600"></i>
+                区域背景与救援挑战
+            </h2>
+            <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg">
+                <p class="text-lg leading-relaxed">需要指出的是，此次地震发生的区域，其地缘环境及社会经济背景具有一定的复杂性。部分地区可能长期面临基础设施薄弱、交通不便，甚至武装冲突、边境非法活动等特定挑战。这些既有因素无疑对灾害响应的效率、救援物资的顺畅通行、信息的准确传递以及灾后恢复与重建工作的开展构成了额外的严峻考验。</p>
+                <p class="mt-4 text-md leading-relaxed text-slate-700">例如，部分地区的持续冲突可能导致关键救援通道受阻或不时中断，增加了救援物资运输的难度和时间成本。通讯基础设施的薄弱也使得灾情评估和协调指挥面临更大挑战。此外，对特定脆弱群体（如流离失所者、少数民族社群）的援助需求识别和精准送达，也因地区特殊性而更为复杂。</p>
+                <p class="mt-6 text-md text-slate-600">尽管如此，在灾难面前，国际社会的关注焦点始终是人道主义援助和对受灾民众的生命救援。本页内容亦主要聚焦于地震灾害本身及其救援行动，旨在客观记录灾情，传递关怀，并呼吁对受灾地区持续的关注与支持。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-300 py-10 text-center">
+        <div class="container mx-auto px-6">
+            <p>&copy; <span id="currentYear"></span> 缅甸地震信息综合记录.</p>
+            <p class="text-sm mt-2">信息来源：综合公开报道及分析材料。本页面仅供信息参考与人道关注。</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/leaflet.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/lucide.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
